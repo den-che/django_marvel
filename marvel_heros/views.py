@@ -5,7 +5,6 @@ from rest_framework.viewsets import ModelViewSet
 
 from django_marvel.serializers import HeroSerializator
 
-def index(request):
-    form = HeroForm()
-    heros = Hero.object.all()
-    return render_to_response('index.html',{'heros': heros, 'form': form}) 
+class HeroViewSet(ModelViewSet):
+    queryset = Hero.objects.all()
+    serializer_class = HeroSerializer
