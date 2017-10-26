@@ -1,8 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 
-from marvel.hero.models import Hero 
+from marvel_heros.models import Hero 
 
-class Hero(ModelSerializer):
+class HeroSerializer(ModelSerializer):
     class Meta:
         model = Hero
         fields = ('name', 'img_link', 'real_name')

@@ -1,4 +1,4 @@
-from orders.models import Hero
+from marvel_heros.models import Hero
 
 
 class HeroForm(forms.ModelForm):
