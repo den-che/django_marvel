@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from marvel_heros.views import get_hero
+from marvel_heros.views import get_hero, HeroViewSet
 
 urlpatterns = [
-    url(r'^$', get_hero),
+    url(r'^index/', get_hero),
     url(r'^admin/', admin.site.urls),
 ]

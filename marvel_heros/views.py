@@ -8,6 +8,7 @@ from marvel_heros.serializers import HeroSerializer
 
 def get_hero(request):
     heros = Hero.objects.all()
+    print(heros)
     return render_to_response('marvel_heros.html',{'heros': heros})
 
 class HeroViewSet(ModelViewSet):

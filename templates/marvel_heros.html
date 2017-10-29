@@ -1,14 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script type="text/javascript" src = "jquery.md5.js"></script>
-	<script src="marvel_get.js"></script>
-	<title></title>
+	<meta charset="UTF-8">
+    <title>Title</title>
+    
+<!--	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.md5.js"></script>
+	<script src="marvel_get.js"></script>  -->
 </head>
 <body>
 	<div class="title"> <h1>Marvel heros</h1></div>
-	<div class="content"></div>
-	
+
+	{% for hero in heros %}
+	<div class="content">
+		<img src= {{ heros.img_link }} width = 170px, height=170px/>
+		<h3> Name: {{heros.name}}</h3>
+		<h3> Real name: {{heros.real_name}}</h3>
+	</div>
+	{% endfor %}
 </body>
 </html>
