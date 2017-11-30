@@ -31,7 +31,7 @@ $(function (){
     });
 
     query_hero = $.ajax({
-        url: 'https://127.0.0.1/api/hero',
+        url: 'http://127.0.0.1:8000/api/hero/',
         datatype:'json',
         success:function(query_hero){
             console.log(query_hero);
