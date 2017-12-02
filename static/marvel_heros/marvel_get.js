@@ -13,32 +13,26 @@ $(function (){
         datatype:'json',
         success: function(marvel_hero){
             console.log(marvel_hero);
-            
-            
-                marvel_dict['name'] = marvel_hero['data']['results'][0]['name'];
-                marvel_dict['img_link'] = marvel_hero['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
-                console.log(marvel_dict);
-
-                var img  = $("<img/>").attr({'src': marvel_dict['img_link'],'width':'170px','height':'170px'})
-                    
-                        $(".content").append(img);  
-                        $(".content").append(marvel_dict['name']);      
-                   
-                
-                
          }
-
     });
 
+    
     query_hero = $.ajax({
-        url: 'http://127.0.0.1:8000/api/hero/',
+        url: 'api/hero/',
         datatype:'json',
         success:function(query_hero){
             console.log(query_hero);
+            for (var item = 0; item<query_hero.length; item++)
+            { 
+                var row_div = $('<div class="marvel_hero_row_'+item+'"></div>').appendTo('.content');    
+                var img  = $("<img/>").attr({'src': query_hero[item]['img_link'],'width':'170px','height':'170px'});                
+                
+                $(row_div).append(img);  
+                $(row_div).append('<div class="hero_name"><h3> Name:  '+query_hero[item]['name']+'<h3></div>');
+                $(row_div).append('<div class="real_name"><h3> Real Name:  '+query_hero[item]['real_name']+'</h3></div>');
+            }    
         }    
     });
-
-
 });
 
 

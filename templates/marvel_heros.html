@@ -1,23 +1,16 @@
-<!DOCTYPE html>	
+<!DOCTYPE html> 
 <html>
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Title</title>
     {% load static %}
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script type="text/javascript" src='{% static "marvel_heros/jquery.md5.js" %}'></script>
-	<script type="text/javascript" src='{% static "marvel_heros/marvel_get.js" %}'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src='{% static "marvel_heros/jquery.md5.js" %}'></script>
+    <script type="text/javascript" src='{% static "marvel_heros/marvel_get.js" %}'></script>
 </head>
 <body>
-	<div class="title"> <h1>Marvel heros</h1></div>
-
-	{% for hero in heros %}
-	<div class="content">
-		<img src= {{ hero.img_link }} width = 170px, height=170px/>
-		<h3> Name: {{hero.name}}</h3>
-		<h3> Real name: {{hero.real_name}}</h3>
-	</div>
-	{% endfor %}
+    <div class="title"> <h1>Marvel heros</h1></div>
+    <div class="content"> </div>
 </body>
 </html>
