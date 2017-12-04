@@ -11,7 +11,7 @@ $(function (){
     marvel_hero = $.ajax({
         url: 'https://gateway.marvel.com:443/v1/public/characters/1009610?ts='+ts+'&apikey='+public_key+'&hash='+hash,
         datatype:'json',
-        success: function(marvel_hero){
+            success: function(marvel_hero){
             console.log(marvel_hero);
          }
     });
