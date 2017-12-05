@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from marvel_heros.views import get_hero, HeroViewSet
+from marvel_heros.views import get_hero, insert_hero, HeroViewSet
 from rest_framework import routers
 
 router = routers.SimpleRouter()
 router.register(r'api/hero', HeroViewSet)
-
 urlpatterns = [
     url(r'^$', get_hero),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/insert_hero', insert_hero)
 ]
 
 urlpatterns += router.urls

@@ -20,7 +20,15 @@ $(function (){
         datatype:'json',
             success: function(marvel_hero){
             console.log(marvel_hero);
-             }
+
+                insert_hero  = $.ajax({
+                    url: 'api/insert_hero/',
+                    datatype:'json',
+                    success:function(insert_hero){
+                        console.log(insert_hero);
+                    }         
+                });
+            }
         });
     });    
 
