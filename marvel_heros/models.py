@@ -5,4 +5,4 @@ from django.db import models
 class Hero(models.Model):
     name = models.CharField(max_length = 30)
     img_link = models.CharField(max_length = 200)
-    real_name = models.CharField(max_length = 100)
+    description = models.CharField(max_length = 1000)

@@ -5,5 +5,5 @@ from marvel_heros.models import Hero
 class HeroSerializer(ModelSerializer):
     class Meta:
         model = Hero
-        fields = ('name', 'img_link', 'real_name')
+        fields = ('name', 'img_link', 'description')
 
