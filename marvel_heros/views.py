@@ -12,9 +12,9 @@ def get_hero(request):
     return render_to_response('marvel_heros.html',{'heros': heros})
 
 def insert_hero(request):
-	hero_name = request['data']['results'][0]['name']
-	hero_img_link = request['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
-	hero_description = request['data']['results'][0]['description']
+	hero_name = request.GET['data']['results'][0]['name']
+	hero_img_link = request.GET['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
+	hero_description = request.GET['data']['results'][0]['description']
 	hero = Hero(name = hero_name, img_link = hero_img_link, description = hero_description)
 	hero.save()
 
