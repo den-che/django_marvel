@@ -27,14 +27,15 @@ $(function (){
                 console.log(marvel_dict)
 
                 insert_hero  = $.ajax({
-                    url: 'api/hero',
+                    url: 'api/hero/',
                     datatype:'json',
                     method: 'POST',
                     data: marvel_dict, 
                     success:function(insert_hero){
                         console.log(insert_hero);
                     }         
-                });
+                });                
+                console.log(insert_hero);
             }
         });
     });    
