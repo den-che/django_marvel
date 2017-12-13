@@ -1,7 +1,7 @@
 $(function (){
         
 
-    $("#hero_send").click(function(marvel_id){
+    $("#hero_send").click(function(marvel_name){
     var marvel_dict={}
     var private_key = '43f959fa13099d1567ca9341655a4993b1242513';
     var public_key = '33b674252b864996dfa38ef6c1fca82a';
@@ -9,21 +9,21 @@ $(function (){
     var hash = $.md5(ts+private_key+public_key);
     var marvel_hero = {}
 
-    var marvel_id = $("#hero_id").val();
-    console.log(marvel_id);
-    var req = 'https://gateway.marvel.com:443/v1/public/characters/'+marvel_id+'?ts='+ts+'&apikey='+public_key+'&hash='+hash; 
+    var marvel_name = $("#hero_name").val();
+    console.log(marvel_name);
+    var req = 'https://gateway.marvel.com:443/v1/public/characters?name='+marvel_name+'&ts='+ts+'&apikey='+public_key+'&hash='+hash; 
     console.log(req)
 
 
     marvel_hero = $.ajax({
-        url: 'https://gateway.marvel.com:443/v1/public/characters/'+marvel_id+'?ts='+ts+'&apikey='+public_key+'&hash='+hash,
+        url: 'https://gateway.marvel.com:443/v1/public/characters?name='+marvel_name+'&ts='+ts+'&apikey='+public_key+'&hash='+hash,
         datatype:'json',
             success: function(marvel_hero){
             console.log(marvel_hero);
                 
-                marvel_dict['hero_name'] = marvel_hero['data']['results'][0]['name']
-                marvel_dict['hero_img_link'] = marvel_hero['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
-                marvel_dict['hero_description'] = marvel_hero['data']['results'][0]['description']
+                marvel_dict['name'] = marvel_hero['data']['results'][0]['name']
+                marvel_dict['img_link'] = marvel_hero['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
+                marvel_dict['description'] = marvel_hero['data']['results'][0]['description']
                 console.log(marvel_dict)
 
                 insert_hero  = $.ajax({
