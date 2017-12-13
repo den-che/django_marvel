@@ -20,10 +20,17 @@ $(function (){
         datatype:'json',
             success: function(marvel_hero){
             console.log(marvel_hero);
+                
+                marvel_dict['hero_name'] = marvel_hero['data']['results'][0]['name']
+                marvel_dict['hero_img_link'] = marvel_hero['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
+                marvel_dict['hero_description'] = marvel_hero['data']['results'][0]['description']
+                console.log(marvel_dict)
 
                 insert_hero  = $.ajax({
-                    url: 'api/insert_hero',
+                    url: 'api/hero',
                     datatype:'json',
+                    method: 'POST',
+                    data: marvel_dict, 
                     success:function(insert_hero){
                         console.log(insert_hero);
                     }         
