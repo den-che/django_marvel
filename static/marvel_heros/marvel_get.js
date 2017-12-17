@@ -16,32 +16,38 @@ $(function (){
 
 
     marvel_hero = $.ajax({
+        async:false,
         url: 'https://gateway.marvel.com:443/v1/public/characters?name='+marvel_name+'&ts='+ts+'&apikey='+public_key+'&hash='+hash,
-        datatype:'json',
-            success: function(marvel_hero){
+        datatype:'json'}).done(function(marvel_hero){
+
             console.log(marvel_hero);
                 
                 marvel_dict['name'] = marvel_hero['data']['results'][0]['name']
                 marvel_dict['img_link'] = marvel_hero['data']['results'][0]['thumbnail']['path']+'.'+marvel_hero['data']['results'][0]['thumbnail']['extension']
                 marvel_dict['description'] = marvel_hero['data']['results'][0]['description']
                 console.log(marvel_dict)
+                alert(marvel_hero.text);
 
+                });
                 insert_hero  = $.ajax({
                     url: 'api/hero/',
                     datatype:'json',
                     method: 'POST',
-                    data: marvel_dict, 
-                    success:function(insert_hero){
+                    data: marvel_dict,
+                    async:false,
+                }).done(function(insert_hero){
                         console.log(insert_hero);
-                    }         
+                        alert("Новый герой добавлен в БД!");
+                             
                 });                
                 console.log(insert_hero);
-            }
-        });
+            
+        
     });    
 
     
         query_hero = $.ajax({
+        method:'GET',
         url: 'api/hero/',
         datatype:'json',
         success:function(query_hero){
