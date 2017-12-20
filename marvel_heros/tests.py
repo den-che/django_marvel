@@ -9,10 +9,17 @@ class MarvelTest(APITestCase):
                 'img_link':'test.img',
                 'description':'description test'
                 }
-        url = 'api/hero'
+        url = '/api/hero/'
         hero_response = self.client.post(url, data, format='json')
-        print(hero_response)
+        print(hero_response.data)
         self.assertEqual(hero_response.status_code, 201)
         self.assertEqual(Hero.objects.count(), 1)
         self.assertEqual(Hero.objects.get().name, 'DeadPool')
-        
+    
+    def test_get_marvel_heros(self):
+        client = APIClient()
+        url = '/api/hero/'
+        hero_response = self.client.get(url, format='json')
+        print(hero_response.data)
+        self.assertEqual(hero_response.code, 200)
+        print(Hero.objects.count())    
