@@ -1,9 +1,12 @@
 from django.test import TestCase
+from fonts.tests.factories import FontFactory, AuthorFactory
 from rest_framework.test import APITestCase, APIClient
 from marvel_heros.models import Hero
 
 
 class MarvelTest(APITestCase):
+    def setUp(self):
+
     def test_check_marvel_api_response(self):
         client = APIClient()
         data = {'name':'DeadPool',
